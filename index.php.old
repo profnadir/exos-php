@@ -1,0 +1,64 @@
+
+class Article {
+
+    private $nom;
+
+    public function __construct($nom){
+        $this->nom = $nom;
+    }
+
+    public function __toString()
+    {
+        return "Name : ". $this->nom;
+    }
+}
+
+EtreVivant
+manger()
+
+Humain
+manger(){'human'}
+
+Animal
+manger(){'animal'}
+
+
+
+
+
+
+
+
+class Article2 {
+
+    private $nom;
+
+    public function __construct($nom){
+        $this->nom = $nom;
+    }
+
+    public function __toString()
+    {
+        return "Nom : ". $this->nom;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+$article1 = new Article("John Doe");
+
+echo $article1;
+
+echo "</br>";
+
+$article2 = new Article2("Jane Doe");
+
+echo $article2;
+

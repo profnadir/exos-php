@@ -1,0 +1,83 @@
+<?php
+
+class Article {
+    private $reference;
+    private $nom;
+    private $prix;
+    private $quantiteEnStock;
+    private $quantiteCommandee;
+
+    public function __construct($reference, $nom, $prix, $quantiteEnStock, $quantiteCommandee) {
+        $this->reference = $reference;
+        $this->nom = $nom;
+        $this->prix = $prix;
+        $this->quantiteEnStock = $quantiteEnStock;
+        $this->quantiteCommandee = $quantiteCommandee;
+    }
+
+    // Vérifie si la quantité commandée est disponible en stock
+    public function verifStock() {
+        return $this->quantiteCommandee <= $this->quantiteEnStock;
+    }
+
+    // Calcule le prix total de la commande
+    public function calculPrix() {
+        if ($this->verifStock()) {
+            return $this->quantiteCommandee * $this->prix;
+        } else {
+            return 0;
+        }
+    }
+
+    // Méthode __toString
+    public function __toString() {
+        if ($this->verifStock()) {
+            return "Référence: " . $this->reference . ", Nom: " . $this->nom . ", Prix unitaire: " . $this->prix . ", Quantité en stock: " . $this->quantiteEnStock . ", Quantité commandée: " . $this->quantiteCommandee;
+        } else {
+            return "La quantité commandée de l'article '" . $this->nom . "' n'est pas disponible en stock.";
+        }
+    }
+
+    // Getters et setters pour accéder aux attributs privés
+    public function getReference() {
+        return $this->reference;
+    }
+
+    public function setReference($reference) {
+        $this->reference = $reference;
+    }
+
+    public function getNom() {
+        return $this->nom;
+    }
+
+    public function setNom($nom) {
+        $this->nom = $nom;
+    }
+
+    public function getPrix() {
+        return $this->prix;
+    }
+
+    public function setPrix($prix) {
+        $this->prix = $prix;
+    }
+
+    public function getQuantiteEnStock() {
+        return $this->quantiteEnStock;
+    }
+
+    public function setQuantiteEnStock($quantiteEnStock) {
+        $this->quantiteEnStock = $quantiteEnStock;
+    }
+
+    public function getQuantiteCommandee() {
+        return $this->quantiteCommandee;
+    }
+
+    public function setQuantiteCommandee($quantiteCommandee) {
+        $this->quantiteCommandee = $quantiteCommandee;
+    }
+}
+
+?>

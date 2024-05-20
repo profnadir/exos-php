@@ -1,0 +1,11 @@
+<?php
+
+require('Article.php');
+
+$article = new Article("produit1",100,5,10,6);
+echo $article;
+
+echo '<br>';
+
+$article2 = new Article("produit2",90,10,5,7);
+echo $article2;

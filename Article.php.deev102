@@ -1,0 +1,104 @@
+
+
+class Article
+{
+    private $nom;
+    private $prix;
+    private $quantite_stock;
+    private $quantite_commande;
+    private $numero_reference;
+
+    public function __construct($nom, $prix, $quantite_stock, $quantite_commande, $numero_reference)
+    {
+        $this->nom = $nom;
+        $this->prix = $prix;
+        $this->quantite_stock = $quantite_stock;
+        $this->quantite_commande = $quantite_commande;
+        $this->numero_reference = $numero_reference;
+    }
+
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    public function setPrix($Prix)
+    {
+        $this->prix = $Prix;
+    }
+
+    public function getQuantite_stock()
+    {
+        return $this->quantite_stock;
+    }
+
+    public function setQuantite_stock($quantite_stock)
+    {
+        $this->quantite_stock = $quantite_stock;
+    }
+
+    public function getQuantite_commande()
+    {
+        return $this->quantite_commande;
+    }
+
+    public function setQuantite_commande($quantite_commande)
+    {
+        $this->quantite_commande = $quantite_commande;
+    }
+
+    public function getNumero_reference()
+    {
+        return $this->numero_reference;
+    }
+
+    public function setNumero_reference($numero_reference)
+    {
+        $this->numero_reference = $numero_reference;
+    }
+
+    public function verifierStock()
+    {
+        // Si quantite en stock est superiere a quantite commande on retourne true sinon on retourn false
+       /*  if ($this->quantite_commande <= $this->quantite_stock) {
+            return true;
+        } else {
+            return false;
+        } */
+        return $this->quantite_commande <= $this->quantite_stock;
+    }
+
+    public function calculPrix(){
+        if($this->verifierStock()){
+            return $this->quantite_commande * $this->prix;
+        }else{
+            return 0;
+        }
+    }
+
+    public function __toString()
+    {
+        if($this->verifierStock()){
+            $txt = "Vous avez commandé l'article : ". $this->nom . "<br>";
+            $txt .= "Quantité : " .$this->quantite_commande . "<br>";
+            $txt .= "Prix total : " . $this->calculPrix() . "<br>";
+            return $txt;
+        }
+        else {
+            $txt = "Vous avez commandé l'article : ". $this->nom . "<br>";
+            $txt .= "Quantité : " .$this->quantite_commande . "<br>";
+            $txt .= "Article épuisé <br>";
+            return $txt;
+        }
+    }
+}
